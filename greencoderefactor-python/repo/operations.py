@@ -7,13 +7,13 @@ def test():
     d = 2
     y = a + 50
     z = y * 2
-    mensaje = "Hola mundo"
+    message = "Hello world"
     pi = 3.14159
-    suma = a + b
-    resta = c - b
-    multiplicacion = suma * d
-    division = c // d  # División entera como en Java
-    temp = multiplicacion + 10
+    sum_result = a + b
+    subtraction = c - b
+    multiplication = sum_result * d
+    division = c // d  # Integer division as in Java
+    temp = multiplication + 10
     flag = False
-    tasa = 1.5
-    return multiplicacion + resta + division
+    rate = 1.5
+    return multiplication + subtraction + division
