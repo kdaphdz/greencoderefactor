@@ -1,4 +1,4 @@
-def test():
+def operate():
     a = 5
     b = 10
     c = 20
