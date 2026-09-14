@@ -17,43 +17,30 @@ public class App {
 
         Map<String, String> argMap = parseArguments(args);
 
-        String repo = argMap.get("repo");
-        String ref = argMap.get("ref");
+        String input = argMap.get("input");
         String output = argMap.get("output");
         String rulesArg = argMap.get("rules");
-        String ci = argMap.get("ci");
-        String runId = argMap.get("run_id");
-        String workflowName = argMap.get("workflow_name");
-        String workflowId = argMap.get("workflow_id");
-        String commitHash = argMap.get("commit_hash");
 
         List<String> rules = null;
         if (rulesArg != null && !rulesArg.isEmpty()) {
             rules = Arrays.asList(rulesArg.split(","));
         }
 
-        if (repo == null || output == null) {
-            logger.severe("Missing required arguments: --repo and --output are mandatory.");
+        if (input == null || output == null) {
+            logger.severe("Missing required arguments: --input and --output are mandatory.");
             System.exit(1);
         }
 
         try {
             Map<String, Object> result = RefactorService.runRefactor(
-                    repo,
-                    ref,
+                    input,
                     rules,
-                    output,
-                    ci,
-                    runId,
-                    workflowName,
-                    workflowId,
-                    commitHash
+                    output
             );
+
             logger.info("Refactor completed successfully.");
             logger.info("Output directory: " + output);
-            if (result.containsKey("branch_url") && result.get("branch_url") != null) {
-                logger.info("Branch URL: " + result.get("branch_url"));
-            }
+
             if (result.containsKey("message")) {
                 logger.info("Message: " + result.get("message"));
             }
@@ -66,14 +53,22 @@ public class App {
 
     private static Map<String, String> parseArguments(String[] args) {
         Map<String, String> argMap = new HashMap<>();
+
         for (int i = 0; i < args.length; i++) {
             if (args[i].startsWith("--")) {
                 String key = args[i].substring(2);
-                String value = (i + 1 < args.length && !args[i + 1].startsWith("--")) ? args[i + 1] : "";
+                String value = (i + 1 < args.length && !args[i + 1].startsWith("--"))
+                        ? args[i + 1]
+                        : "";
+
                 argMap.put(key, value);
-                if (!value.isEmpty()) i++;
+
+                if (!value.isEmpty()) {
+                    i++;
+                }
             }
         }
+
         return argMap;
     }
 }

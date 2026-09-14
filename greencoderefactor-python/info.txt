@@ -1,0 +1,76 @@
+PS C:\Users\ALARCOS\Desktop\greencoderefactor\greencoderefactor-python> python main.py --input ./repo --output ./output --rules ExplicitRaiseToExceptBodyTransformer                                                           
+2026-09-14 19:27:32,445 - greencoderefactor - INFO - Starting refactor for directory: ./repo
+2026-09-14 19:27:32,445 - greencoderefactor - INFO - Using provided output directory: ./output
+2026-09-14 19:27:32,445 - greencoderefactor - INFO - Transforming file: ./repo\operations.py
+2026-09-14 19:27:32,445 - greencoderefactor - INFO - Selected transformers: ['ExplicitRaiseToExceptBodyTransformer']
+2026-09-14 19:27:32,445 - greencoderefactor - INFO - Reading file ./repo\operations.py for transformation.
+2026-09-14 19:27:32,459 - greencoderefactor - INFO - Transformation log appended for ./repo\operations.py.
+2026-09-14 19:27:32,461 - greencoderefactor - INFO - No transformations applied. Copied original file: ./repo\operations.py
+2026-09-14 19:27:32,461 - greencoderefactor - INFO - Transforming file: ./repo\process_data.py
+2026-09-14 19:27:32,464 - greencoderefactor - INFO - Selected transformers: ['ExplicitRaiseToExceptBodyTransformer']
+2026-09-14 19:27:32,466 - greencoderefactor - INFO - Reading file ./repo\process_data.py for transformation.
+2026-09-14 19:27:32,468 - greencoderefactor - INFO - Applied rule: ExplicitRaiseToExceptBodyTransformer: Replaced `raise MyException()` with corresponding except block at line 14.
+2026-09-14 19:27:32,469 - greencoderefactor - INFO - Changes detected in ./repo\process_data.py, writing transformed code to ./output\process_data.py.
+2026-09-14 19:27:32,471 - greencoderefactor - INFO - Transformation log appended for ./repo\process_data.py.
+2026-09-14 19:27:32,471 - greencoderefactor - INFO - Changes detected. Transformed file written to: ./output\process_data.py
+2026-09-14 19:27:32,471 - greencoderefactor - INFO - Transforming file: ./repo\test_data.py
+2026-09-14 19:27:32,472 - greencoderefactor - INFO - Selected transformers: ['ExplicitRaiseToExceptBodyTransformer']
+2026-09-14 19:27:32,473 - greencoderefactor - INFO - Reading file ./repo\test_data.py for transformation.
+2026-09-14 19:27:32,476 - greencoderefactor - INFO - Transformation log appended for ./repo\test_data.py.
+2026-09-14 19:27:32,479 - greencoderefactor - INFO - No transformations applied. Copied original file: ./repo\test_data.py
+2026-09-14 19:27:32,480 - greencoderefactor - INFO - Refactor completed successfully
+2026-09-14 19:27:32,481 - greencoderefactor - INFO - Refactor completed successfully. Output directory: ./output
+PS C:\Users\ALARCOS\Desktop\greencoderefactor\greencoderefactor-python> python main.py --input ./output --output ./output --rules UnusedLocalVariablesTransformer   
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Starting refactor for directory: ./output
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Using provided output directory: ./output
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Input and output directories are the same. Using temporary files for in-place transformation.
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Transforming file: ./output\operations.py
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Selected transformers: ['UnusedLocalVariablesTransformer']
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Reading file ./output\operations.py for transformation.
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Applied rule: UnusedLocalVariablesTransformer: Removed unused variable 'z' at line 9
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Applied rule: UnusedLocalVariablesTransformer: Removed unused variable 'mensaje' at line 10
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Applied rule: UnusedLocalVariablesTransformer: Removed unused variable 'pi' at line 11
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Applied rule: UnusedLocalVariablesTransformer: Removed unused variable 'temp' at line 16
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Applied rule: UnusedLocalVariablesTransformer: Removed unused variable 'flag' at line 17
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Applied rule: UnusedLocalVariablesTransformer: Removed unused variable 'tasa' at line 18
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Applied rule: UnusedLocalVariablesTransformer: Removed unused variable 'y' at line 8
+2026-09-14 19:27:45,150 - greencoderefactor - INFO - Changes detected in ./output\operations.py, writing transformed code to C:\Users\ALARCOS\AppData\Local\Temp\greencoderefactor_inplace_u5jas00_\operations.py.
+2026-09-14 19:27:45,160 - greencoderefactor - INFO - Transformation log appended for ./output\operations.py.
+2026-09-14 19:27:45,164 - greencoderefactor - INFO - Changes detected. Replaced original file: ./output\operations.py
+2026-09-14 19:27:45,165 - greencoderefactor - INFO - Transforming file: ./output\process_data.py
+2026-09-14 19:27:45,165 - greencoderefactor - INFO - Selected transformers: ['UnusedLocalVariablesTransformer']
+2026-09-14 19:27:45,166 - greencoderefactor - INFO - Reading file ./output\process_data.py for transformation.
+2026-09-14 19:27:45,170 - greencoderefactor - INFO - Transformation log appended for ./output\process_data.py.
+2026-09-14 19:27:45,171 - greencoderefactor - INFO - No transformations applied: ./output\process_data.py
+2026-09-14 19:27:45,173 - greencoderefactor - INFO - Transforming file: ./output\test_data.py
+2026-09-14 19:27:45,174 - greencoderefactor - INFO - Selected transformers: ['UnusedLocalVariablesTransformer']
+2026-09-14 19:27:45,174 - greencoderefactor - INFO - Reading file ./output\test_data.py for transformation.
+2026-09-14 19:27:45,175 - greencoderefactor - INFO - Transformation log appended for ./output\test_data.py.
+2026-09-14 19:27:45,176 - greencoderefactor - INFO - No transformations applied: ./output\test_data.py
+2026-09-14 19:27:45,176 - greencoderefactor - INFO - Refactor completed successfully
+2026-09-14 19:27:45,178 - greencoderefactor - INFO - Refactor completed successfully. Output directory: ./output
+PS C:\Users\ALARCOS\Desktop\greencoderefactor\greencoderefactor-python> python main.py --input ./output --output ./output --rules UnusedAssignmentTransformer       
+2026-09-14 19:27:52,859 - greencoderefactor - INFO - Starting refactor for directory: ./output
+2026-09-14 19:27:52,859 - greencoderefactor - INFO - Using provided output directory: ./output
+2026-09-14 19:27:52,860 - greencoderefactor - INFO - Input and output directories are the same. Using temporary files for in-place transformation.
+2026-09-14 19:27:52,862 - greencoderefactor - INFO - Transforming file: ./output\operations.py
+2026-09-14 19:27:52,862 - greencoderefactor - INFO - Selected transformers: ['UnusedAssignmentTransformer']
+2026-09-14 19:27:52,862 - greencoderefactor - INFO - Reading file ./output\operations.py for transformation.
+2026-09-14 19:27:52,863 - greencoderefactor - INFO - Applied rule: UnusedAssignmentTransformer: Removed consecutive dead store to 'b' at line 3
+2026-09-14 19:27:52,863 - greencoderefactor - INFO - Applied rule: UnusedAssignmentTransformer: Removed consecutive dead store to 'b' at line 4
+2026-09-14 19:27:52,864 - greencoderefactor - INFO - Changes detected in ./output\operations.py, writing transformed code to C:\Users\ALARCOS\AppData\Local\Temp\greencoderefactor_inplace_ejw3x3wi\operations.py.
+2026-09-14 19:27:52,865 - greencoderefactor - INFO - Transformation log appended for ./output\operations.py.
+2026-09-14 19:27:52,868 - greencoderefactor - INFO - Changes detected. Replaced original file: ./output\operations.py
+2026-09-14 19:27:52,868 - greencoderefactor - INFO - Transforming file: ./output\process_data.py
+2026-09-14 19:27:52,868 - greencoderefactor - INFO - Selected transformers: ['UnusedAssignmentTransformer']
+2026-09-14 19:27:52,869 - greencoderefactor - INFO - Reading file ./output\process_data.py for transformation.
+2026-09-14 19:27:52,871 - greencoderefactor - INFO - Transformation log appended for ./output\process_data.py.
+2026-09-14 19:27:52,871 - greencoderefactor - INFO - No transformations applied: ./output\process_data.py
+2026-09-14 19:27:52,872 - greencoderefactor - INFO - Transforming file: ./output\test_data.py
+2026-09-14 19:27:52,872 - greencoderefactor - INFO - Selected transformers: ['UnusedAssignmentTransformer']
+2026-09-14 19:27:52,873 - greencoderefactor - INFO - Reading file ./output\test_data.py for transformation.
+2026-09-14 19:27:52,875 - greencoderefactor - INFO - Transformation log appended for ./output\test_data.py.
+2026-09-14 19:27:52,875 - greencoderefactor - INFO - No transformations applied: ./output\test_data.py
+2026-09-14 19:27:52,876 - greencoderefactor - INFO - Refactor completed successfully
+2026-09-14 19:27:52,877 - greencoderefactor - INFO - Refactor completed successfully. Output directory: ./output
+PS C:\Users\ALARCOS\Desktop\greencoderefactor\greencoderefactor-python> 

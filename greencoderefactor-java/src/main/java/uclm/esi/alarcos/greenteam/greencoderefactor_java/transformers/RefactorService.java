@@ -3,6 +3,7 @@ package uclm.esi.alarcos.greenteam.greencoderefactor_java.transformers;
 import uclm.esi.alarcos.greenteam.greencoderefactor_java.config.LoggerConfig;
 import uclm.esi.alarcos.greenteam.greencoderefactor_java.config.LoggerSetupResult;
 
+import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 import java.util.logging.Logger;
@@ -14,93 +15,241 @@ public class RefactorService {
     private static final Logger logger = loggerSetup.getLogger();
 
     public static Map<String, Object> runRefactor(
-            String repo,
-            String ref,
+            String inputDir,
             List<String> rules,
-            String outputDir,
-            String ci,
-            String runId,
-            String workflowName,
-            String workflowId,
-            String commitHash
+            String outputDir
     ) {
-        logger.info(String.format("[CI=%s] Starting refactor for repo: %s on branch: %s", ci, repo, ref));
+
+        logger.info("Starting refactor for directory: " + inputDir);
 
         Map<String, Object> result = new HashMap<>();
-        Path outputPath = Paths.get(outputDir != null ? outputDir : System.getProperty("java.io.tmpdir"), "greencoderefactor_output");
-        Path clonePath = outputPath.resolve("repo");
+
+        Path inputPath = Paths.get(inputDir).toAbsolutePath().normalize();
+        Path outputPath = Paths.get(outputDir).toAbsolutePath().normalize();
 
         try {
-            Files.createDirectories(outputPath);
-            logger.info("Output directory: " + outputPath);
 
-            String repoUrl;
-            if (repo.startsWith("http")) {
-                repoUrl = repo; // URL HTTPS
-            } else {
-                repoUrl = "git@github.com:" + repo + ".git";
-            }
-            logger.info("Cloning repository from: " + repoUrl);
-
-            ProcessBuilder clonePb = new ProcessBuilder(
-                    "git", "clone", "--depth", "1", "--branch", ref, repoUrl, clonePath.toString()
-            );
-            clonePb.redirectErrorStream(true);
-            clonePb.inheritIO();
-
-            Process cloneProcess = clonePb.start();
-            int exitCode = cloneProcess.waitFor();
-            if (exitCode != 0) {
-                String msg = "❌ Failed to clone repository: " + repoUrl;
+            if (!Files.exists(inputPath) || !Files.isDirectory(inputPath)) {
+                String msg = "Input directory does not exist: " + inputDir;
                 logger.severe(msg);
                 result.put("message", msg);
                 return result;
             }
-            logger.info("✅ Repository cloned successfully.");
 
-            List<Path> javaFiles = Files.walk(clonePath)
-                    .filter(p -> p.toString().endsWith(".java"))
-                    .collect(Collectors.toList());
+            Files.createDirectories(outputPath);
 
-            if (javaFiles.isEmpty()) {
-                String msg = "⚠️ No Java files found in repository.";
+            logger.info("Input directory: " + inputPath);
+            logger.info("Output directory: " + outputPath);
+
+            if (rules == null || rules.isEmpty()) {
+                String msg = "No transformation rules specified.";
                 logger.warning(msg);
                 result.put("message", msg);
+                result.put("output_dir", outputPath.toString());
                 return result;
             }
 
-            Path transformedDir = outputPath.resolve("transformed");
-            Files.createDirectories(transformedDir);
+            boolean inPlace = inputPath.equals(outputPath);
 
-            List<Map<String, Object>> fileResults = new ArrayList<>();
+            if (inPlace) {
+                logger.info(
+                        "Input and output directories are the same. "
+                                + "Using temporary files for in-place transformation."
+                );
+            }
 
-            for (Path file : javaFiles) {
-                Path relative = clonePath.relativize(file);
-                Path outputFile = transformedDir.resolve(relative);
-                Files.createDirectories(outputFile.getParent());
+            Path tempDir = null;
 
-                logger.info("🔧 Transforming file: " + file);
-                try {
-                    Map<String, Object> res = TransformerRunner.transformCode(file, outputFile, rules);
-                    fileResults.add(res);
-                } catch (Exception e) {
-                    logger.warning("⚠️ Could not transform file " + file + ": " + e.getMessage());
+            if (inPlace) {
+                tempDir = Files.createTempDirectory(
+                        "greencoderefactor_inplace_"
+                );
+            }
+
+            try {
+
+                List<Path> javaFiles = Files.walk(inputPath)
+                        .filter(Files::isRegularFile)
+                        .filter(p -> p.toString().endsWith(".java"))
+                        .collect(Collectors.toList());
+
+                if (javaFiles.isEmpty()) {
+                    String msg = "No Java files found in input directory.";
+                    logger.warning(msg);
+                    result.put("message", msg);
+                    result.put("output_dir", outputPath.toString());
+                    return result;
+                }
+
+                List<Map<String, Object>> fileResults = new ArrayList<>();
+
+                for (Path file : javaFiles) {
+
+                    Path relative = inputPath.relativize(file);
+
+                    Path transformationOutput;
+
+                    if (inPlace) {
+
+                        transformationOutput = tempDir.resolve(relative);
+
+                        Files.createDirectories(
+                                transformationOutput.getParent()
+                        );
+
+                    } else {
+
+                        transformationOutput = outputPath.resolve(relative);
+
+                        Files.createDirectories(
+                                transformationOutput.getParent()
+                        );
+                    }
+
+                    logger.info("Transforming file: " + file);
+
+                    try {
+
+                        Map<String, Object> res =
+                                TransformerRunner.transformCode(
+                                        file,
+                                        transformationOutput,
+                                        rules
+                                );
+
+                        if (res != null
+                                && Boolean.TRUE.equals(res.get("changed"))) {
+
+                            if (inPlace) {
+
+                                Files.move(
+                                        transformationOutput,
+                                        file,
+                                        StandardCopyOption.REPLACE_EXISTING
+                                );
+
+                                logger.info(
+                                        "Changes detected. Replaced original file: "
+                                                + file
+                                );
+
+                            } else {
+
+                                logger.info(
+                                        "Changes detected. Transformed file written to: "
+                                                + transformationOutput
+                                );
+                            }
+
+                        } else {
+
+                            if (!inPlace) {
+
+                                if (!Files.exists(transformationOutput)) {
+
+                                    Files.copy(
+                                            file,
+                                            transformationOutput
+                                    );
+
+                                    logger.info(
+                                            "No transformations applied. "
+                                                    + "Copied original file: "
+                                                    + file
+                                    );
+
+                                } else {
+
+                                    logger.info(
+                                            "No transformations applied. "
+                                                    + "Output file already exists: "
+                                                    + transformationOutput
+                                    );
+                                }
+
+                            } else {
+
+                                logger.info(
+                                        "No transformations applied: "
+                                                + file
+                                );
+                            }
+                        }
+
+                        fileResults.add(res);
+
+                    } catch (Exception e) {
+
+                        logger.warning(
+                                "Could not transform file "
+                                        + file
+                                        + ": "
+                                        + e.getMessage()
+                        );
+                    }
+                }
+
+                long changedCount = fileResults.stream()
+                        .filter(Objects::nonNull)
+                        .filter(r -> Boolean.TRUE.equals(r.get("changed")))
+                        .count();
+
+                result.put("changed_files", changedCount);
+                result.put("total_files", fileResults.size());
+                result.put("output_dir", outputPath.toString());
+
+                String message =
+                        "Transformation completed. Changed "
+                                + changedCount
+                                + " of "
+                                + fileResults.size()
+                                + " files.";
+
+                result.put("message", message);
+
+                logger.info(message);
+
+            } finally {
+
+                if (tempDir != null && Files.exists(tempDir)) {
+
+                    try {
+
+                        Files.walk(tempDir)
+                                .sorted(Comparator.reverseOrder())
+                                .forEach(path -> {
+                                    try {
+                                        Files.deleteIfExists(path);
+                                    } catch (IOException e) {
+                                        logger.warning(
+                                                "Could not delete temporary file: "
+                                                        + path
+                                                        + ": "
+                                                        + e.getMessage()
+                                        );
+                                    }
+                                });
+
+                    } catch (IOException e) {
+
+                        logger.warning(
+                                "Could not clean temporary directory: "
+                                        + tempDir
+                                        + ": "
+                                        + e.getMessage()
+                        );
+                    }
                 }
             }
 
-            long changedCount = fileResults.stream().filter(r -> (boolean) r.get("changed")).count();
-            result.put("changed_files", changedCount);
-            result.put("total_files", fileResults.size());
-            result.put("message", "Transformation completed. Changed " + changedCount + " of " + fileResults.size() + " files.");
-            result.put("output_dir", transformedDir.toString());
-
-            logger.info("Refactor finished. Changed " + changedCount + " of " + fileResults.size() + " files.");
-
         } catch (Exception e) {
+
             String msg = "Refactor failed: " + e.getMessage();
+
             logger.severe(msg);
+
             result.put("message", msg);
-            e.printStackTrace();
+            result.put("output_dir", outputPath.toString());
         }
 
         return result;
