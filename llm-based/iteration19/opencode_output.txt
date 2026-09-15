@@ -1,0 +1,117 @@
+STDOUT
+======================================================================
+All three files analyzed. Applying T9 to `operations.py` and T10 to `process_data.py`; `test_data.py` has no applicable transformations.
+Summary
+- Files modified: `process_data.py`, `operations.py`
+- T9 transformations: 9 (`b=2`, `b=3` dead stores; unused `y`, `z`, `message`, `pi`, `temp`, `flag`, `rate`)
+- T10 transformations: 1 (`try/except` → direct `if/else` in `process_data`)
+
+Behavior verified: `operate()` returns 50; `process_data` applies `*2` (x==1) or `*3` (otherwise).
+
+
+STDERR
+======================================================================
+[0m
+> build · big-pickle
+[0m
+[0m$ [0mfind /home/carlos/Escritorio/BENEVOL/repo -name "*.py" -type f
+/home/carlos/Escritorio/BENEVOL/repo/process_data.py
+/home/carlos/Escritorio/BENEVOL/repo/test_data.py
+/home/carlos/Escritorio/BENEVOL/repo/operations.py
+[0m
+[0m→ [0mRead process_data.py
+[0m→ [0mRead test_data.py
+[0m→ [0mRead operations.py
+[0m
+[0m← [0mEdit process_data.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/process_data.py
++++ /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+@@ -6,13 +6,10 @@
+ 
+ def process_data(x, data):
+     result = [0] * len(data)
+     for i in range(len(data)):
+-        try:
+-            if x == 1:
+-                result[i] = data[i] * 2
+-            else:
+-                raise MyException("x is not 1")
+-        except MyException:
++        if x == 1:
++            result[i] = data[i] * 2
++        else:
+             result[i] = data[i] * 3
+     operate()
+     return result
+\ No newline at end of file
+
+[0m
+[0m← [0mEdit operations.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/operations.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/operations.py
++++ /home/carlos/Escritorio/BENEVOL/repo/operations.py
+@@ -1,8 +1,6 @@
+ def operate():
+     a = 5
+-    b = 2
+-    b = 3
+     b = 10
+     c = 20
+     d = 2
+     y = a + 50
+
+[0m
+[0m← [0mEdit operations.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/operations.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/operations.py
++++ /home/carlos/Escritorio/BENEVOL/repo/operations.py
+@@ -2,12 +2,8 @@
+ a = 5
+ b = 10
+ c = 20
+ d = 2
+-y = a + 50
+-z = y * 2
+-message = "Hello world"
+-pi = 3.14159
+ sum_result = a + b
+ subtraction = c - b
+ multiplication = sum_result * d
+ division = c // d  # Integer division as in Java
+
+[0m
+[0m← [0mEdit operations.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/operations.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/operations.py
++++ /home/carlos/Escritorio/BENEVOL/repo/operations.py
+@@ -6,8 +6,5 @@
+ sum_result = a + b
+ subtraction = c - b
+ multiplication = sum_result * d
+ division = c // d  # Integer division as in Java
+-temp = multiplication + 10
+-flag = False
+-rate = 1.5
+ return multiplication + subtraction + division
+\ No newline at end of file
+
+[0m
+[0m→ [0mRead process_data.py
+[0m→ [0mRead operations.py
+[0m
+[0m$ [0mcd /home/carlos/Escritorio/BENEVOL/repo && python3 -c "
+from operations import operate
+print('operate:', operate())
+from process_data import process_data
+print('pd 1:', process_data(1, [1,2,3]))
+print('pd 2:', process_data(2, [1,2,3]))
+"
+operate: 50
+pd 1: [2, 4, 6]
+pd 2: [3, 6, 9]
+[0m

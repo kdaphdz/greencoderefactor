@@ -1,0 +1,81 @@
+STDOUT
+======================================================================
+Analyzing the three Python files for T9 (dead code) and T10 (exception control flow).
+Done. Summary:
+
+- **Files modified:** `process_data.py`, `operations.py`
+- **T9 transformations (dead code):** 9 (in `operations.py`) — removed dead stores `b = 2`, `b = 3`, and dead vars `y`, `z`, `message`, `pi`, `temp`, `flag`, `rate`
+- **T10 transformations (exception flow):** 1 (in `process_data.py`) — replaced `try/raise/except MyException` inside the loop with a direct `if/else`
+
+`test_data.py` required no changes. Verified with `python3 -m py_compile`; behavior preserved.
+
+
+STDERR
+======================================================================
+[0m
+> build · big-pickle
+[0m
+[0m✱ [0mGlob "**/*.py"[90m in . · 3 matches[0m
+[0m→ [0mRead test_data.py
+[0m→ [0mRead process_data.py
+[0m→ [0mRead operations.py
+[0m
+[0m← [0mEdit process_data.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/process_data.py
++++ /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+@@ -6,13 +6,10 @@
+ 
+ def process_data(x, data):
+     result = [0] * len(data)
+     for i in range(len(data)):
+-        try:
+-            if x == 1:
+-                result[i] = data[i] * 2
+-            else:
+-                raise MyException("x is not 1")
+-        except MyException:
++        if x == 1:
++            result[i] = data[i] * 2
++        else:
+             result[i] = data[i] * 3
+     operate()
+     return result
+\ No newline at end of file
+
+[0m
+[0m← [0mEdit operations.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/operations.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/operations.py
++++ /home/carlos/Escritorio/BENEVOL/repo/operations.py
+@@ -1,19 +1,10 @@
+ def operate():
+     a = 5
+-    b = 2
+-    b = 3
+     b = 10
+     c = 20
+     d = 2
+-    y = a + 50
+-    z = y * 2
+-    message = "Hello world"
+-    pi = 3.14159
+     sum_result = a + b
+     subtraction = c - b
+     multiplication = sum_result * d
+     division = c // d  # Integer division as in Java
+-    temp = multiplication + 10
+-    flag = False
+-    rate = 1.5
+     return multiplication + subtraction + division
+\ No newline at end of file
+
+[0m
+[0m→ [0mRead process_data.py
+[0m→ [0mRead operations.py
+[0m
+[0m$ [0mpython3 -m py_compile process_data.py operations.py test_data.py && echo OK
+OK
+[0m

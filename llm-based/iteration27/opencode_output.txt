@@ -1,0 +1,66 @@
+STDOUT
+======================================================================
+Done.
+
+**Files modified:** `operations.py`, `process_data.py`
+
+**T9 transformations (dead code/stores removed):** 8 — `operations.py`: `b = 2`, `b = 3` (dead stores), `z`, `message`, `pi`, `temp`, `flag`, `rate` (unused variables)
+
+**T10 transformations (exception control flow):** 1 — `process_data.py`: replaced the `try/raise MyException/except` block with a direct `if/else`
+
+`test_data.py` had no dead code or unnecessary exception handling. Behavior verified (`process_data(1,…)` → ×2, `process_data(0,…)` → ×3).
+
+
+STDERR
+======================================================================
+[0m
+> build · big-pickle
+[0m
+[0m$ [0mls -la /home/carlos/Escritorio/BENEVOL/repo
+total 20
+drwxrwxr-x 2 carlos carlos 4096 Sep 14 21:39 .
+drwxrwxr-x 5 carlos carlos 4096 Sep 14 22:28 ..
+-rw-rw-r-- 1 carlos carlos  400 Sep 14 21:39 operations.py
+-rw-rw-r-- 1 carlos carlos  454 Sep 14 21:39 process_data.py
+-rw-rw-r-- 1 carlos carlos  335 Sep 14 21:39 test_data.py
+[0m
+[0m✱ [0mGlob "**/*.py"[90m in . · 3 matches[0m
+[0m→ [0mRead operations.py
+[0m→ [0mRead process_data.py
+[0m→ [0mRead test_data.py
+[0m
+[0m← [0mWrite operations.py
+Wrote file successfully.
+[0m
+[0m← [0mEdit process_data.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/process_data.py
++++ /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+@@ -6,13 +6,10 @@
+ 
+ def process_data(x, data):
+     result = [0] * len(data)
+     for i in range(len(data)):
+-        try:
+-            if x == 1:
+-                result[i] = data[i] * 2
+-            else:
+-                raise MyException("x is not 1")
+-        except MyException:
++        if x == 1:
++            result[i] = data[i] * 2
++        else:
+             result[i] = data[i] * 3
+     operate()
+     return result
+\ No newline at end of file
+
+[0m
+[0m→ [0mRead operations.py
+[0m→ [0mRead process_data.py
+[0m
+[0m$ [0mpython3 -c "import sys; sys.path.insert(0,'/home/carlos/Escritorio/BENEVOL/repo'); from process_data import process_data; print(process_data(1,[1,2,3])); print(process_data(0,[1,2,3]))"
+[2, 4, 6]
+[3, 6, 9]
+[0m

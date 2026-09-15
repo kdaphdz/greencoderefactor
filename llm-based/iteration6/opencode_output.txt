@@ -1,0 +1,104 @@
+STDOUT
+======================================================================
+Three Python files found. Analyzing each for T9 (dead code) and T10 (unnecessary exception-based control flow).
+
+**operations.py**: dead stores `b=2`, `b=3`; dead variables `y`, `z`, `message`, `pi`, `temp`, `flag`, `rate` → T9.
+**process_data.py**: `try/except` used only for branch-specific error handling → T10.
+**test_data.py**: no applicable transformations.
+Verifying syntax and behavior preservation:
+Both transformations applied and behavior verified.
+
+## Summary
+
+**Files modified:**
+- `/home/carlos/Escritorio/BENEVOL/repo/operations.py`
+- `/home/carlos/Escritorio/BENEVOL/repo/process_data.py`
+
+**T9 transformations: 9** (operations.py) — removed dead stores `b = 2`, `b = 3` and unused variables `y`, `z`, `message`, `pi`, `temp`, `flag`, `rate`.
+
+**T10 transformations: 1** (process_data.py) — replaced the `try/raise MyException/except` block with a direct `if/else` that preserves the exact same branch behavior.
+
+`test_data.py` required no changes.
+
+
+STDERR
+======================================================================
+[0m
+> build · big-pickle
+[0m
+[0m✱ [0mGlob "**/*.py"[90m in . · 3 matches[0m
+[0m→ [0mRead .
+[0m→ [0mRead operations.py
+[0m→ [0mRead process_data.py
+[0m→ [0mRead test_data.py
+[0m
+[0m← [0mEdit operations.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/operations.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/operations.py
++++ /home/carlos/Escritorio/BENEVOL/repo/operations.py
+@@ -1,19 +1,10 @@
+ def operate():
+     a = 5
+-    b = 2
+-    b = 3
+     b = 10
+     c = 20
+     d = 2
+-    y = a + 50
+-    z = y * 2
+-    message = "Hello world"
+-    pi = 3.14159
+     sum_result = a + b
+     subtraction = c - b
+     multiplication = sum_result * d
+     division = c // d  # Integer division as in Java
+-    temp = multiplication + 10
+-    flag = False
+-    rate = 1.5
+     return multiplication + subtraction + division
+\ No newline at end of file
+
+[0m
+[0m← [0mEdit process_data.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/process_data.py
++++ /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+@@ -6,13 +6,10 @@
+ 
+ def process_data(x, data):
+     result = [0] * len(data)
+     for i in range(len(data)):
+-        try:
+-            if x == 1:
+-                result[i] = data[i] * 2
+-            else:
+-                raise MyException("x is not 1")
+-        except MyException:
++        if x == 1:
++            result[i] = data[i] * 2
++        else:
+             result[i] = data[i] * 3
+     operate()
+     return result
+\ No newline at end of file
+
+[0m
+[0m→ [0mRead process_data.py
+[0m→ [0mRead operations.py
+[0m
+[0m$ [0mpython -c "import ast; ast.parse(open('operations.py').read()); ast.parse(open('process_data.py').read()); ast.parse(open('test_data.py').read()); print('syntax OK')"
+syntax OK
+[0m
+[0m$ [0mpython -c "
+from operations import operate
+from process_data import process_data
+print('operate() ->', operate())
+print('process_data(1,[1,2,3]) ->', process_data(1,[1,2,3]))
+print('process_data(0,[1,2,3]) ->', process_data(0,[1,2,3]))
+"
+operate() -> 50
+process_data(1,[1,2,3]) -> [2, 4, 6]
+process_data(0,[1,2,3]) -> [3, 6, 9]
+[0m

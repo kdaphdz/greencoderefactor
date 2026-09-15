@@ -1,0 +1,3164 @@
+Input file: repo/process_data.py
+Output file: tmp/process_data.py
+
+Applied Rules:
+ExplicitRaiseToExceptBodyTransformer: Replaced `raise MyException()` with corresponding except block at line 14.
+
+Changes (diff):
+--- repo/process_data.py (original)
++++ tmp/process_data.py (transformed)
+@@ -1,18 +1,11 @@
+ from operations import operate
+-
+-class MyException(Exception):
+-    def __init__(self, message):
+-        super().__init__(message)
+ 
+ def process_data(x, data):
+     result = [0] * len(data)
+     for i in range(len(data)):
+-        try:
+-            if x == 1:
+-                result[i] = data[i] * 2
+-            else:
+-                raise MyException("x is not 1")
+-        except MyException:
++        if x == 1:
++            result[i] = data[i] * 2
++        else:
+             result[i] = data[i] * 3
+     operate()
+     return result
+
+---
+
+Input file: repo/test_data.py
+Output file: tmp/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: repo/operations.py
+Output file: tmp/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: repo/process_data.py
+Output file: tmp/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: repo/test_data.py
+Output file: tmp/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: repo/operations.py
+Output file: tmp/operations.py
+
+Applied Rules:
+UnusedLocalVariablesTransformer: Removed unused variable 'z' at line 9
+UnusedLocalVariablesTransformer: Removed unused variable 'message' at line 10
+UnusedLocalVariablesTransformer: Removed unused variable 'pi' at line 11
+UnusedLocalVariablesTransformer: Removed unused variable 'temp' at line 16
+UnusedLocalVariablesTransformer: Removed unused variable 'flag' at line 17
+UnusedLocalVariablesTransformer: Removed unused variable 'rate' at line 18
+UnusedLocalVariablesTransformer: Removed unused variable 'y' at line 8
+
+Changes (diff):
+--- repo/operations.py (original)
++++ tmp/operations.py (transformed)
+@@ -5,15 +5,8 @@
+     b = 10
+     c = 20
+     d = 2
+-    y = a + 50
+-    z = y * 2
+-    message = "Hello world"
+-    pi = 3.14159
+     sum_result = a + b
+     subtraction = c - b
+     multiplication = sum_result * d
+-    division = c // d  # Integer division as in Java
+-    temp = multiplication + 10
+-    flag = False
+-    rate = 1.5
++    division = c // d
+     return multiplication + subtraction + division
+
+---
+
+Input file: repo/process_data.py
+Output file: tmp/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: repo/test_data.py
+Output file: tmp/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: repo/operations.py
+Output file: tmp/operations.py
+
+Applied Rules:
+UnusedAssignmentTransformer: Removed consecutive dead store to 'b' at line 3
+UnusedAssignmentTransformer: Removed consecutive dead store to 'b' at line 4
+
+Changes (diff):
+--- repo/operations.py (original)
++++ tmp/operations.py (transformed)
+@@ -1,18 +1,16 @@
+ def operate():
+     a = 5
+-    b = 2
+-    b = 3
+     b = 10
+     c = 20
+     d = 2
+     y = a + 50
+     z = y * 2
+-    message = "Hello world"
++    message = 'Hello world'
+     pi = 3.14159
+     sum_result = a + b
+     subtraction = c - b
+     multiplication = sum_result * d
+-    division = c // d  # Integer division as in Java
++    division = c // d
+     temp = multiplication + 10
+     flag = False
+     rate = 1.5
+
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration1/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration1/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration1/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration1/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration1/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration1/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration1/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration1/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration1/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration1/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration1/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration1/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration1/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration1/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration1/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration1/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration1/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration1/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration2/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration2/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration2/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration2/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration2/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration2/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration2/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration2/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration2/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration2/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration2/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration2/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration2/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration2/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration2/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration2/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration2/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration2/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration3/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration3/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration3/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration3/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration3/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration3/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration3/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration3/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration3/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration3/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration3/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration3/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration3/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration3/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration3/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration3/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration3/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration3/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration4/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration4/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration4/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration4/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration4/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration4/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration4/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration4/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration4/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration4/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration4/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration4/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration4/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration4/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration4/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration4/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration4/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration4/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration5/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration5/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration5/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration5/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration5/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration5/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration5/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration5/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration5/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration5/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration5/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration5/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration5/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration5/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration5/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration5/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration5/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration5/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration6/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration6/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration6/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration6/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration6/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration6/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration6/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration6/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration6/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration6/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration6/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration6/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration6/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration6/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration6/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration6/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration6/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration6/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration7/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration7/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration7/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration7/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration7/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration7/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration7/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration7/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration7/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration7/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration7/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration7/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration7/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration7/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration7/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration7/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration7/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration7/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration8/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration8/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration8/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration8/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration8/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration8/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration8/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration8/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration8/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration8/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration8/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration8/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration8/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration8/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration8/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration8/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration8/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration8/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration9/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration9/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration9/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration9/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration9/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration9/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration9/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration9/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration9/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration9/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration9/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration9/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration9/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration9/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration9/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration9/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration9/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration9/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration10/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration10/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration10/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration10/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration10/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration10/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration10/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration10/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration10/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration10/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration10/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration10/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration10/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration10/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration10/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration10/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration10/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration10/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration11/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration11/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration11/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration11/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration11/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration11/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration11/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration11/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration11/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration11/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration11/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration11/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration11/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration11/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration11/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration11/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration11/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration11/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration12/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration12/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration12/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration12/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration12/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration12/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration12/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration12/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration12/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration12/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration12/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration12/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration12/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration12/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration12/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration12/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration12/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration12/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration13/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration13/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration13/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration13/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration13/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration13/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration13/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration13/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration13/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration13/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration13/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration13/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration13/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration13/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration13/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration13/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration13/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration13/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration14/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration14/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration14/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration14/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration14/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration14/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration14/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration14/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration14/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration14/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration14/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration14/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration14/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration14/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration14/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration14/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration14/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration14/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration15/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration15/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration15/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration15/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration15/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration15/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration15/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration15/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration15/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration15/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration15/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration15/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration15/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration15/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration15/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration15/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration15/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration15/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration16/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration16/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration16/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration16/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration16/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration16/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration16/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration16/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration16/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration16/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration16/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration16/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration16/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration16/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration16/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration16/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration16/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration16/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration17/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration17/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration17/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration17/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration17/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration17/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration17/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration17/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration17/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration17/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration17/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration17/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration17/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration17/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration17/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration17/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration17/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration17/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration18/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration18/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration18/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration18/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration18/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration18/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration18/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration18/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration18/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration18/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration18/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration18/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration18/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration18/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration18/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration18/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration18/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration18/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration19/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration19/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration19/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration19/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration19/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration19/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration19/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration19/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration19/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration19/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration19/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration19/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration19/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration19/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration19/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration19/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration19/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration19/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration20/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration20/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration20/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration20/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration20/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration20/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration20/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration20/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration20/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration20/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration20/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration20/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration20/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration20/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration20/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration20/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration20/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration20/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration21/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration21/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration21/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration21/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration21/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration21/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration21/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration21/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration21/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration21/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration21/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration21/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration21/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration21/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration21/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration21/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration21/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration21/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration22/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration22/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration22/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration22/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration22/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration22/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration22/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration22/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration22/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration22/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration22/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration22/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration22/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration22/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration22/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration22/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration22/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration22/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+UnusedLocalVariablesTransformer: Removed unused variable 'y' at line 6
+
+Changes (diff):
+--- /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/operations.py (original)
++++ /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_UnusedLocalVariablesTransformer/operations.py (transformed)
+@@ -3,9 +3,8 @@
+     b = 10
+     c = 20
+     d = 2
+-    y = a + 50
+     sum_result = a + b
+     subtraction = c - b
+     multiplication = sum_result * d
+-    division = c // d  # Integer division as in Java
++    division = c // d
+     return multiplication + subtraction + division
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration23/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration23/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration24/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration24/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration24/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration24/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration24/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration24/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration24/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration24/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration24/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration24/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration24/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration24/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration24/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration24/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration24/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration24/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration24/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration24/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration25/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration25/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration25/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration25/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration25/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration25/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration25/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration25/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration25/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration25/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration25/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration25/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration25/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration25/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration25/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration25/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration25/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration25/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration26/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration26/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration26/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration26/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration26/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration26/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration26/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration26/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration26/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration26/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration26/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration26/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration26/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration26/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration26/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration26/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration26/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration26/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+UnusedLocalVariablesTransformer: Removed unused variable 'y' at line 6
+
+Changes (diff):
+--- /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/operations.py (original)
++++ /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_UnusedLocalVariablesTransformer/operations.py (transformed)
+@@ -3,9 +3,8 @@
+     b = 10
+     c = 20
+     d = 2
+-    y = a + 50
+     sum_result = a + b
+     subtraction = c - b
+     multiplication = sum_result * d
+-    division = c // d  # Integer division as in Java
++    division = c // d
+     return multiplication + subtraction + division
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration27/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration27/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration28/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration28/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration28/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration28/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration28/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration28/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration28/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration28/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration28/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration28/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration28/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration28/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration28/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration28/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration28/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration28/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration28/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration28/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration29/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration29/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration29/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration29/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration29/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration29/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration29/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration29/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration29/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration29/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration29/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration29/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration29/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration29/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration29/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration29/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration29/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration29/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration30/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration30/tmp_ExplicitRaiseToExceptBodyTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration30/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration30/tmp_ExplicitRaiseToExceptBodyTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration30/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration30/tmp_ExplicitRaiseToExceptBodyTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration30/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration30/tmp_UnusedLocalVariablesTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration30/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration30/tmp_UnusedLocalVariablesTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration30/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration30/tmp_UnusedLocalVariablesTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration30/repo/process_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration30/tmp_UnusedAssignmentTransformer/process_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration30/repo/test_data.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration30/tmp_UnusedAssignmentTransformer/test_data.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+
+Input file: /home/carlos/Escritorio/BENEVOL/results/iteration30/repo/operations.py
+Output file: /home/carlos/Escritorio/BENEVOL/results/iteration30/tmp_UnusedAssignmentTransformer/operations.py
+
+Applied Rules:
+No rules were triggered.
+
+Changes (diff):
+No changes detected.
+
+---
+

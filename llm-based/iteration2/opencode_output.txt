@@ -1,0 +1,138 @@
+STDOUT
+======================================================================
+Analyzing the three files. Let me plan the transformations.
+**operations.py — T9 DCE:**
+- Dead stores: `b = 2`, `b = 3` (overwritten by `b = 10` before use)
+- Unused: `y = a + 50` (only feeds dead `z`), `z = y * 2`, `message`, `pi`, `temp`, `flag`, `rate`
+
+`a` stays live (used by `sum_result = a + b`).
+**process_data.py — T10:**
+The `raise MyException` inside `try` + `except MyException` is unnecessary exception-based control flow. It can be replaced with a direct `if/else`.
+**test_data.py:** No unused locals or exception handling — no changes needed.
+
+Now verifying all files compile and behavior is preserved:
+Done.
+
+## Summary
+
+**Files modified:**
+- `operations.py` (T9)
+- `process_data.py` (T10)
+
+**T9 transformations: 9** — in `operations.py`, removed dead stores `b = 2` and `b = 3`, and unused variables `y` (= `a + 50`, only fed dead `z`), `z` (= `y * 2`), `message`, `pi`, `temp`, `flag`, `rate`. Kept `a` since it's used by `sum_result = a + b`.
+
+**T10 transformations: 1** — in `process_data.py`, replaced the `try: raise MyException(...) except MyException:` pattern in the loop with a direct `if/else`, preserving the `* 2` / `* 3` behavior.
+
+`test_data.py` needed no changes (no dead locals or exception-based flow). All files compile and behavior is verified (x=1 → ×2, otherwise → ×3).
+
+
+STDERR
+======================================================================
+[0m
+> build · big-pickle
+[0m
+[0m$ [0mls -la /home/carlos/Escritorio/BENEVOL/repo
+total 20
+drwxrwxr-x 2 carlos carlos 4096 Sep 14 21:39 .
+drwxrwxr-x 5 carlos carlos 4096 Sep 14 21:51 ..
+-rw-rw-r-- 1 carlos carlos  400 Sep 14 21:39 operations.py
+-rw-rw-r-- 1 carlos carlos  454 Sep 14 21:39 process_data.py
+-rw-rw-r-- 1 carlos carlos  335 Sep 14 21:39 test_data.py
+[0m
+[0m→ [0mRead operations.py
+[0m→ [0mRead process_data.py
+[0m→ [0mRead test_data.py
+[0m
+[0m# [0mTodos
+[•] T9: Remove dead stores/unused vars in operations.py
+[ ] T10: Simplify exception flow in process_data.py
+[ ] Check test_data.py for transformations
+[ ] Verify files still compile/run
+[0m
+[0m← [0mEdit operations.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/operations.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/operations.py
++++ /home/carlos/Escritorio/BENEVOL/repo/operations.py
+@@ -1,19 +1,10 @@
+ def operate():
+     a = 5
+-    b = 2
+-    b = 3
+     b = 10
+     c = 20
+     d = 2
+-    y = a + 50
+-    z = y * 2
+-    message = "Hello world"
+-    pi = 3.14159
+     sum_result = a + b
+     subtraction = c - b
+     multiplication = sum_result * d
+     division = c // d  # Integer division as in Java
+-    temp = multiplication + 10
+-    flag = False
+-    rate = 1.5
+     return multiplication + subtraction + division
+\ No newline at end of file
+
+[0m
+[0m# [0mTodos
+[✓] T9: Remove dead stores/unused vars in operations.py
+[•] T10: Simplify exception flow in process_data.py
+[ ] Check test_data.py for transformations
+[ ] Verify files still compile/run
+[0m
+[0m← [0mEdit process_data.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/process_data.py
++++ /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+@@ -6,13 +6,10 @@
+ 
+ def process_data(x, data):
+     result = [0] * len(data)
+     for i in range(len(data)):
+-        try:
+-            if x == 1:
+-                result[i] = data[i] * 2
+-            else:
+-                raise MyException("x is not 1")
+-        except MyException:
++        if x == 1:
++            result[i] = data[i] * 2
++        else:
+             result[i] = data[i] * 3
+     operate()
+     return result
+\ No newline at end of file
+
+[0m
+[0m→ [0mRead process_data.py
+[0m
+[0m$ [0mpython3 -m py_compile operations.py process_data.py test_data.py && echo COMPILE_OK
+COMPILE_OK
+[0m
+[0m$ [0mpython3 -c "
+import random
+from process_data import process_data
+from operations import operate
+
+random.seed(42)
+operate()
+
+for x in (1, 5, 0, -3):
+    data = list(range(7))
+    print(x, process_data(x, data))
+"
+1 [0, 2, 4, 6, 8, 10, 12]
+5 [0, 3, 6, 9, 12, 15, 18]
+0 [0, 3, 6, 9, 12, 15, 18]
+-3 [0, 3, 6, 9, 12, 15, 18]
+[0m
+[0m# [0mTodos
+[✓] T9: Remove dead stores/unused vars in operations.py
+[✓] T10: Simplify exception flow in process_data.py
+[✓] Check test_data.py for transformations
+[✓] Verify files still compile/run
+[0m

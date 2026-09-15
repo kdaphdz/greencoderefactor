@@ -1,0 +1,110 @@
+STDOUT
+======================================================================
+Now I'll apply T9 to `operations.py`.
+Now I'll apply T10 to `process_data.py`.
+Let me verify behavior is preserved.
+Verified — behavior preserved.
+
+## Summary
+
+**Files modified:**
+- `operations.py`
+- `process_data.py`
+
+(`test_data.py` required no changes.)
+
+**T9 transformations:** 9
+- Removed unused variables: `y`, `z`, `message`, `pi`, `temp`, `flag`, `rate`
+- Removed dead stores: `b = 2`, `b = 3` (both overwritten by `b = 10` before use)
+
+**T10 transformations:** 1
+- Replaced try/except raising `MyException` in `process_data` with direct `if/else` control flow (identical behavior; `MyException` class retained per rule 7).
+
+
+STDERR
+======================================================================
+[0m
+> build · big-pickle
+[0m
+[0m$ [0mls -la /home/carlos/Escritorio/BENEVOL/repo
+total 20
+drwxrwxr-x 2 carlos carlos 4096 Sep 14 21:39 .
+drwxrwxr-x 5 carlos carlos 4096 Sep 14 22:02 ..
+-rw-rw-r-- 1 carlos carlos  400 Sep 14 21:39 operations.py
+-rw-rw-r-- 1 carlos carlos  454 Sep 14 21:39 process_data.py
+-rw-rw-r-- 1 carlos carlos  335 Sep 14 21:39 test_data.py
+[0m
+[0m✱ [0mGlob "**/*.py"[90m in . · 3 matches[0m
+[0m→ [0mRead operations.py
+[0m→ [0mRead process_data.py
+[0m→ [0mRead test_data.py
+[0m
+[0m← [0mEdit operations.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/operations.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/operations.py
++++ /home/carlos/Escritorio/BENEVOL/repo/operations.py
+@@ -1,19 +1,10 @@
+ def operate():
+     a = 5
+-    b = 2
+-    b = 3
+     b = 10
+     c = 20
+     d = 2
+-    y = a + 50
+-    z = y * 2
+-    message = "Hello world"
+-    pi = 3.14159
+     sum_result = a + b
+     subtraction = c - b
+     multiplication = sum_result * d
+     division = c // d  # Integer division as in Java
+-    temp = multiplication + 10
+-    flag = False
+-    rate = 1.5
+     return multiplication + subtraction + division
+\ No newline at end of file
+
+[0m
+[0m← [0mEdit process_data.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/process_data.py
++++ /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+@@ -6,13 +6,10 @@
+ 
+ def process_data(x, data):
+     result = [0] * len(data)
+     for i in range(len(data)):
+-        try:
+-            if x == 1:
+-                result[i] = data[i] * 2
+-            else:
+-                raise MyException("x is not 1")
+-        except MyException:
++        if x == 1:
++            result[i] = data[i] * 2
++        else:
+             result[i] = data[i] * 3
+     operate()
+     return result
+\ No newline at end of file
+
+[0m
+[0m→ [0mRead operations.py
+[0m→ [0mRead process_data.py
+[0m
+[0m$ [0mpython3 -c "
+from operations import operate
+from process_data import process_data
+print('operate:', operate())
+print('x=1:', process_data(1, [1,2,3]))
+print('x=2:', process_data(2, [1,2,3]))
+print('x=0:', process_data(0, [1,2,3]))
+"
+operate: 50
+x=1: [2, 4, 6]
+x=2: [3, 6, 9]
+x=0: [3, 6, 9]
+[0m

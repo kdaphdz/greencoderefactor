@@ -1,0 +1,77 @@
+STDOUT
+======================================================================
+Analyzing all 3 Python files. Findings:
+
+**operations.py** — multiple dead stores/variables: `b=2`/`b=3` overwritten before use, `y` (only used by dead `z`), `z`, `message`, `pi`, `temp`, `flag`, `rate` never read.
+**process_data.py** — `try`/`raise`/`except` used purely as an if/else conditional (T10).
+**test_data.py** — all variables used, no exception handling. No changes.
+Both files compile. Verifying final contents:
+Done.
+
+## Summary
+
+**Files modified:**
+- `operations.py`
+- `process_data.py`
+
+**T9 transformations (Dead Code Elimination): 9** (all in `operations.py`)
+- Removed dead stores `b = 2` and `b = 3` (overwritten by `b = 10` before any read)
+- Removed unused variables `y`, `z`, `message`, `pi`, `temp`, `flag`, `rate` (never read; `y` only fed dead `z`)
+
+**T10 transformations (Exception Handling → direct control flow): 1** (in `process_data.py`)
+- Replaced the `try`/`raise MyException`/`except MyException` block with an equivalent direct `if x == 1: ... else: ...`
+
+`test_data.py` needed no changes (no dead code, no exception-based control flow). Both modified files pass `py_compile`.
+
+
+STDERR
+======================================================================
+[0m
+> build · big-pickle
+[0m
+[0m$ [0mls -la /home/carlos/Escritorio/BENEVOL/repo
+total 20
+drwxrwxr-x 2 carlos carlos 4096 Sep 14 21:39 .
+drwxrwxr-x 5 carlos carlos 4096 Sep 14 22:31 ..
+-rw-rw-r-- 1 carlos carlos  400 Sep 14 21:39 operations.py
+-rw-rw-r-- 1 carlos carlos  454 Sep 14 21:39 process_data.py
+-rw-rw-r-- 1 carlos carlos  335 Sep 14 21:39 test_data.py
+[0m
+[0m✱ [0mGlob "**/*.py"[90m in . · 3 matches[0m
+[0m→ [0mRead operations.py
+[0m→ [0mRead process_data.py
+[0m→ [0mRead test_data.py
+[0m
+[0m← [0mWrite operations.py
+Wrote file successfully.
+[0m
+[0m← [0mEdit process_data.py
+Index: /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+===================================================================
+--- /home/carlos/Escritorio/BENEVOL/repo/process_data.py
++++ /home/carlos/Escritorio/BENEVOL/repo/process_data.py
+@@ -6,13 +6,10 @@
+ 
+ def process_data(x, data):
+     result = [0] * len(data)
+     for i in range(len(data)):
+-        try:
+-            if x == 1:
+-                result[i] = data[i] * 2
+-            else:
+-                raise MyException("x is not 1")
+-        except MyException:
++        if x == 1:
++            result[i] = data[i] * 2
++        else:
+             result[i] = data[i] * 3
+     operate()
+     return result
+\ No newline at end of file
+
+[0m
+[0m$ [0mpython3 -m py_compile operations.py process_data.py test_data.py && echo OK
+OK
+[0m
+[0m→ [0mRead operations.py
+[0m→ [0mRead process_data.py

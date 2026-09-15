@@ -1,0 +1,578 @@
+GREEN CODEREFACTOR TRANSFORMATION VALIDATION
+================================================================================
+GreenCodeRefactor main.py: /home/carlos/greencoderefactor/greencoderefactor-python/main.py
+Results directory: /home/carlos/Escritorio/BENEVOL/results
+================================================================================
+
+================================================================================
+ITERATION1
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION2
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION3
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION4
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION5
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION6
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION7
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION8
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION9
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION10
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION11
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION12
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION13
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION14
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION15
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION16
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION17
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION18
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION19
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION20
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION21
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION22
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION23
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: APPLIED
+Transformations: 1
+  2026-09-14 22:35:38,746 - greencoderefactor - INFO - Applied rule: UnusedLocalVariablesTransformer: Removed unused variable 'y' at line 6
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION24
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION25
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION26
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION27
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: APPLIED
+Transformations: 1
+  2026-09-14 22:35:39,169 - greencoderefactor - INFO - Applied rule: UnusedLocalVariablesTransformer: Removed unused variable 'y' at line 6
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION28
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION29
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+================================================================================
+ITERATION30
+================================================================================
+
+ExplicitRaiseToExceptBodyTransformer
+------------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedLocalVariablesTransformer
+-------------------------------
+Status: NOT APPLIED
+Transformations: 0
+
+UnusedAssignmentTransformer
+---------------------------
+Status: NOT APPLIED
+Transformations: 0
+
