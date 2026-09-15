@@ -285,35 +285,3 @@ For every iteration the repository captures:
 The functional invariants checked in every iteration were, e.g.,
 `operate() == 50`, `process_data(0, [1,2,3]) == [3,6,9]`, and
 `process_data(1, [1,2,3]) == [2,4,6]`, identical to the pre-transformation behavior.
-
----
-
-## 7. Notes and limitations
-
-- The Python module declares optional dependencies (`fastapi`, `uvicorn`, `gitpython`,
-  `ruamel.yaml`) that are **not required** by the current engine; they are intended for
-  future extensions (HTTP API, git integration, YAML rule configuration).
-- The Java module does not yet ship an automated unit-test suite; correctness is enforced
-  today through the shared `tests/` fixtures (Python) and the LLM-based validation campaign.
-- The energy study is performed on a single benchmark subject and machine; while the effect
-  is large and statistically stable (low σ, no overlap between the 30-run distributions),
-  generalization to arbitrary codebases requires larger subject collections.
-
----
-
-## 8. References
-
-- SonarSource, *RSPEC-1481 — Local variables should not be declared and then not used.*
-  https://rules.sonarsource.com/java/RSPEC-1481
-- SonarSource, *RSPEC-1854 — Assignments should not be redundant.*
-  https://rules.sonarsource.com/java/RSPEC-1854
-- JavaParser — *Processing Java code with JavaParser.* https://javaparser.org
-- `pytest-benchmark` — *Fixture for benchmarking and testing code.*
-  https://pytest-benchmark.readthedocs.io
-- Linux `perf` / RAPL — *Performance counters and Running Average Power Limit energy
-  measurement.* `man perf-stat`
-
-## 9. License
-
-No license file is currently distributed with the repository. Please contact the authors
-before reusing or redistributing any part of this work.
